@@ -81,11 +81,20 @@
 
 // let numb = [11, 21, 3];
 //
-// numb.sort((numb1, numb2) => numb1 - numb2);
-// console.log(numb);
 //
-// numb.sort((numb1, numb2) => numb2 - numb1);
-// console.log(numb);
+// function sortNums(numb, text) {
+//     if (text === 'ascending') {
+//         numb.sort((numb1, numb2) => numb1 - numb2);
+//         console.log(numb);
+//     }
+//
+//     else if (text === 'descending') {
+//         numb.sort((numb1, numb2) => numb2 - numb1);
+//         console.log(numb);
+//     }
+// }
+//
+// sortNums(numb,'descending');
 
 
 
@@ -138,40 +147,54 @@
 //     color:'', // 'red','black'
 // }
 
-// let obj = [
-//     {cardSuit: 'spade', value: 'ace', color: 'black'},
-//     {cardSuit: 'diamond', value: '6', color: 'red'},
-//     {cardSuit: 'heart', value: '7', color: 'black'},
-//     {cardSuit: 'clubs', value: '8', color: 'red'},
-//     {cardSuit: 'spade', value: '10', color: 'black'},
-//     {cardSuit: 'diamond', value: '6', color: 'red'},
-//     {cardSuit: 'clubs', value: 'king', color: 'black'},
-//     {cardSuit: 'clubs', value: 'joker', color: 'black'},
-//     {cardSuit: 'spade', value: 'queen', color: 'black'},
-//     {cardSuit: 'diamond', value: '9', color: 'red'},
-// ]
-//
-// let reduce = obj.reduce(function (accumulator, user) {
-//     if (user.value === 'ace') {
-//         accumulator.blackAce.push(user);
-//     }
-//     if (user.value === '6' ) {
-//         accumulator.$666.push(user);
-//     }
-//     if (user.color === 'red') {
-//         accumulator.colorRed.push(user);
-//     }
-//     if (user.cardSuit === 'diamond') {
-//         accumulator.diamond.push(user);
-//     }
-//     if (user.cardSuit === 'clubs') {
-//         if (user.value >= '9') {
-//             accumulator.clubs9.push(user);
-//         }
-//     }
-//     return accumulator;
-// }, {blackAce: [], $666: [], colorRed: [], diamond: [], clubs9: []});
-// console.log(reduce);
+let obj = [
+    {id: 8, cardSuit: 'spade', value: 'ace', color: 'black'},
+    {id: 1, cardSuit: 'diamond', value: 6, color: 'red'},
+    {id: 2, cardSuit: 'heart', value: 7, color: 'black'},
+    {id: 3, cardSuit: 'clubs', value: 8, color: 'red'},
+    {id: 5, cardSuit: 'clubs', value: 10, color: 'black'},
+    {id: 1, cardSuit: 'diamond', value: 6, color: 'red'},
+    {id: 7, cardSuit: 'clubs', value: 'king', color: 'black'},
+    {id: 9, cardSuit: 'clubs', value: 'joker', color: 'black'},
+    {id: 6, cardSuit: 'spade', value: 'queen', color: 'black'},
+    {id: 4, cardSuit: 'diamond', value: 9, color: 'red'},
+]
+
+let reduce = obj.reduce(function (accumulator, user) {
+    if (user.value === 'ace') {
+        accumulator.blackAce.push(user);
+    }
+    if (user.value === 6 ) {
+        accumulator.$666.push(user);
+    }
+    if (user.color === 'red') {
+        accumulator.colorRed.push(user);
+    }
+    if (user.cardSuit === 'diamond') {
+        accumulator.diamond.push(user);
+    }
+
+    // ****************one***************
+
+    if (user.cardSuit === 'clubs') {
+        if (user.id > 3) {
+            accumulator.clubs9.push(user);
+        }
+    }
+
+    // ****************two***************
+
+    // if (user.cardSuit === 'clubs') {
+    //     if (user.value > 8 || user.value.length > 2) {
+    //         accumulator.clubs9.push(user);
+    //     }
+    // }
+
+    // ***********************************
+
+    return accumulator;
+}, {blackAce: [], $666: [], colorRed: [], diamond: [], clubs9: []});
+console.log(reduce);
 
 
 
